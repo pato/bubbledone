@@ -3,14 +3,17 @@ package com.bubbledone.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.bubbledone.main.BubbleDone;
 import com.bubbledone.main.BubbleWorld;
 import com.bubbledone.main.BubbleWorldRenderer;
 
 public class BubbleScreen implements Screen {
 	private BubbleWorld world;
 	private BubbleWorldRenderer renderer;
+	BubbleDone parent;
     
-    public BubbleScreen() {
+    public BubbleScreen(BubbleDone parent) {
+    	this.parent = parent;
         Gdx.app.log("GameScreen", "Attached");
         world = new BubbleWorld();
         renderer = new BubbleWorldRenderer(world);
