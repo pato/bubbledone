@@ -8,6 +8,5 @@ public class BubbleDone extends Game {
 	@Override
 	public void create() {
 		setScreen(new BubbleScreen());
-		
 	}
 }
