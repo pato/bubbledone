@@ -17,8 +17,9 @@ public class BubbleWorld {
 		c.set(Calendar.MONTH, 12);
 		c.set(Calendar.DAY_OF_MONTH, 24);
 		Task t = new Task("Clean clothes", c);
-		bubbles.add(new TaskBubble(t,10,10,10,10,10));
-		bubbles.add(new TaskBubble(t,10,10,100,100,10));
+		bubbles.add(new TaskBubble(t,10,10,10));
+		bubbles.add(new TaskBubble(t,100,100,10));
+		bubbles.add(new TaskBubble(t,100,150,10));
 	}
 	
 	public void update(float delta) {
