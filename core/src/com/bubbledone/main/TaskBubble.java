@@ -9,16 +9,13 @@ import com.badlogic.gdx.math.Vector2;
 
 public class TaskBubble {
 	private Task task;
-	private int width, height;
 	private Vector2 position, velocity;
 	private float radius;
 	
 	private Circle circle;
 
-	public TaskBubble(Task task, int width, int height, float x, float y, float radius) {
+	public TaskBubble(Task task, float x, float y, float radius) {
 		this.task = task;
-		this.width = width;
-        this.height = height;
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
         this.radius = radius;
@@ -40,22 +37,6 @@ public class TaskBubble {
 
 	public void setTask(Task task) {
 		this.task = task;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
 	}
 
 	public Vector2 getPosition() {
