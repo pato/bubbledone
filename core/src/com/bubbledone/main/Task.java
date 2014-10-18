@@ -5,10 +5,10 @@ import java.util.Calendar;
 public class Task {
 	private boolean isComplete;
 	private float priority;
-	Calendar dueDate;
-	String name;
-	
-	String notes;
+  private long estimatedTimeToCompletion;
+	private Calendar dueDate;
+	private String name;
+	private String notes;
 	
 	public Task(String name, Calendar dueDate) {
 		this.name = name;
@@ -17,6 +17,14 @@ public class Task {
 		priority = 1.0f;
 		notes = "";
 	}
+
+  public long getEstimatedTimeToCompletion() {
+    return estimatedTimeToCompletion;
+  }
+
+  public void setEstimatedTimeToCompletion(long estimatedTimeToCompletion) {
+    this.estimatedTimeToCompletion = estimatedTimeToCompletion;
+  }
 
 	public String getNotes() {
 		return notes;
