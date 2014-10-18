@@ -5,7 +5,7 @@ import java.util.Calendar;
 public class Task {
 	private boolean isComplete;
 	private float priority;
-  private long estimatedTimeToCompletion;
+  private long estimatedTimeToCompletion; // minutes
 	private Calendar dueDate;
 	private String name;
 	private String notes;
@@ -13,9 +13,10 @@ public class Task {
 	public Task(String name, Calendar dueDate) {
 		this.name = name;
 		this.dueDate = dueDate;
-		isComplete = false;
-		priority = 1.0f;
-		notes = "";
+    this.estimatedTimeToCompletion = 15;
+		this.isComplete = false;
+		this.priority = 1.0f;
+		this.notes = "";
 	}
 
   public long getEstimatedTimeToCompletion() {
