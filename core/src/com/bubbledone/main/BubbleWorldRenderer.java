@@ -10,20 +10,20 @@ import java.util.List;
 public class BubbleWorldRenderer {
 	private BubbleWorld world;
 	private OrthographicCamera cam;
-    private ShapeRenderer shapeRenderer;
-	
+	private ShapeRenderer shapeRenderer;
+
 	public BubbleWorldRenderer(BubbleWorld world) {
 		this.world = world;
-		
-		cam = new OrthographicCamera();
-        cam.setToOrtho(true, 136, 204);
-        shapeRenderer = new ShapeRenderer();
-        shapeRenderer.setProjectionMatrix(cam.combined);
-	}
-	public void render() {
 
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		cam = new OrthographicCamera();
+		cam.setToOrtho(true, 136, 204);
+		shapeRenderer = new ShapeRenderer();
+		shapeRenderer.setProjectionMatrix(cam.combined);
+	}
+	
+	public void render() {
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
         List<TaskBubble> bubbles = world.getBubbles();
         
