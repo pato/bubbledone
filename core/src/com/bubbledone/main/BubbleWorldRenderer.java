@@ -26,10 +26,7 @@ public class BubbleWorldRenderer {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		// draw attractor
-		shapeRenderer.begin(ShapeType.Filled);
-		shapeRenderer.setColor(255 / 255.0f, 87 / 255.0f, 34 / 255.0f, 1);
-        shapeRenderer.circle(world.getAttractor().getX(), world.getAttractor().getY(), world.getAttractor().getRadius());
-		shapeRenderer.end();
+		AttractorRenderer.render(world, world.getAttractor(), cam, shapeRenderer);
 		
 		// draw bubbles
         

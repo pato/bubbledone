@@ -8,7 +8,8 @@ public final class TaskBubbleRenderer{
 	public static void render(BubbleWorld world, TaskBubble bubble, OrthographicCamera cam, ShapeRenderer shapeRenderer) {
         shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setColor(83 / 255.0f, 109 / 255.0f, 254 / 255.0f, 1);
-        shapeRenderer.circle(bubble.getCircle().x, bubble.getCircle().y, bubble.getCircle().radius);
+        shapeRenderer.ellipse(bubble.getCircle().x, bubble.getCircle().y,
+        		bubble.getCircle().radius, bubble.getCircle().radius, 1000);
         shapeRenderer.end();
 	}
 }
