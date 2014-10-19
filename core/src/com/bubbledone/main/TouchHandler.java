@@ -74,6 +74,7 @@ public class TouchHandler implements GestureListener {
 		
 		world.getBubbleInfoPopup().setTaskBubble(task);
 		world.getBubbleInfoPopup().display();
+		world.getCreateButton().hide();
 		
  		return true;
 	}
