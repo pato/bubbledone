@@ -16,7 +16,7 @@ public final class TaskBubbleRenderer{
         //world.getBatch().setProjectionMatrix(cam.combined);
 
         world.getBatch().begin();
-        String text = "Test";
+        String text = bubble.getName();
         world.getFont().draw(world.getBatch(), text, bubble.getX() - world.getFont().getBounds(text).width / 4 ,
         		bubble.getY() - world.getFont().getBounds(text).height);
         world.getBatch().end();

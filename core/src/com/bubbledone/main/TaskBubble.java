@@ -19,6 +19,10 @@ public class TaskBubble extends Circular {
         setRadius(task.getPriority());
 	}
 	
+	public String getName() {
+		return task.getName();
+	}
+	
 	public Task getTask() {
 		return task;
 	}
