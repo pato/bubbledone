@@ -42,7 +42,7 @@ public class InputHandler implements InputProcessor {
 		Vector3 coords = cam.unproject(new Vector3(screenX, screenY, 0));
 		System.out.println("DRAG x: " + coords.x + " y: " + coords.y + " pointer: " + pointer);
 		TaskBubble task = null;
-		if (last != null) task = last;
+		if (last != null) return true;
 		else {
 			for (TaskBubble t : list) {
 				System.out.println(t.getPosition().x + " " + t.getPosition().y + " " + t.getRadius());
@@ -55,6 +55,8 @@ public class InputHandler implements InputProcessor {
 		
 		if (task == null) return false;
 		
+		last = task;
+		
 		return true;
 	}
 
@@ -65,7 +67,11 @@ public class InputHandler implements InputProcessor {
 	}
 
 	@Override
-	public boolean touchDragged(int screenX, int screenY, int pointer) {		
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		System.out.println(last == null);
+		Vector3 coords = cam.unproject(new Vector3(screenX, screenY, 0));
+		assert last == null;
+		last.update((int) coords.x, (int) coords.y, 0, 0, last.getRadius());
 		return true;
 	}
 
