@@ -2,9 +2,9 @@ package com.bubbledone.main;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.input.GestureDetector;
 import com.bubbledone.interfaces.GetDate;
 import com.bubbledone.screens.BubbleScreen;
 
@@ -31,7 +31,15 @@ public class BubbleDone extends Game {
 	
 	public void setBubbleScreen(){
 		setScreen(bubbles);
-		Gdx.input.setInputProcessor(new InputHandler(bubbles.world, bubbles.renderer.cam));
+		BubbleWorld world = bubbles.world;
+		OrthographicCamera cam = bubbles.renderer.cam;
+		
+		TouchHandler touchHandler = new TouchHandler(world, cam);
+
+		InputMultiplexer multiplexer = new InputMultiplexer();
+		multiplexer.addProcessor(new GestureDetector(touchHandler));
+		multiplexer.addProcessor(new InputHandler(world, cam));
+		Gdx.input.setInputProcessor(multiplexer);
 	}
 	
 	public void setTaskScreen(){
