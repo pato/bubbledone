@@ -22,14 +22,15 @@ public class BubbleWorld {
 		Task t = new Task("Clean clothes", c);
 		bubbles.add(new TaskBubble(t,10,10,10));
 		bubbles.add(new TaskBubble(t,100,100,10));
-		bubbles.add(new TaskBubble(t,100,150,10));
+		bubbles.add(new TaskBubble(t,100,180,30));
 	}
 	
 	private Vector2 collide(Circular a, Circular b){
 		Vector2 diff = a.getPosition().cpy().sub(b.getPosition());
 		float radius = diff.len();
 		float distance = radius - a.getRadius() - b.getRadius();
-		float force_mag = (float) Math.exp(-20.0*distance);
+		if(distance > 0) return new Vector2(0,0);
+		float force_mag = (float) Math.exp(-2.0*distance);
 		return diff.scl(force_mag/radius);
 	}
 	
@@ -50,13 +51,21 @@ public class BubbleWorld {
 			double attractor_mass = Math.pow(attractor.getRadius(), 3);
 			Vector2 difference = affectee.getPosition().cpy().sub(attractor.getPosition());
 			double force_mag = -1 * mass * attractor_mass / Math.pow(difference.len(), 2);
-			Vector2 gravity_force = difference.cpy().scl((float) (force_mag/difference.len()));
+			double grav_constant = 30;
+			Vector2 gravity_force = difference.cpy().scl((float) (grav_constant*force_mag/difference.len()));
 			total_force = total_force.cpy().add(gravity_force);
 			Vector2 acceleration = total_force.cpy().scl((float) (1/mass));
-			Vector2 velocity = affectee.getVelocity().cpy().add(acceleration.scl(delta));
-			Vector2 position = affectee.getPosition().cpy().add(velocity.scl(delta));
+			Vector2 velocity = affectee.getVelocity().cpy().add(acceleration.cpy().scl(delta));
+			float drag = (float) 0.005;
+			velocity.scl(1-drag);
+			Vector2 position = affectee.getPosition().cpy().add(velocity.cpy().scl(delta));
+			System.out.println("dp:" + velocity.cpy().scl(delta));
 			new_velocities.add(velocity);
 			new_positions.add(position);
+		}
+		for(int i=0; i<bubbles.size(); i++){
+			bubbles.get(i).setPosition(new_positions.get(i));
+			bubbles.get(i).setVelocity(new_velocities.get(i));
 		}
     }
 	
