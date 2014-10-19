@@ -81,15 +81,13 @@ public class TouchHandler implements GestureListener {
 
 	@Override
 	public boolean fling(float velocityX, float velocityY, int button) {
-		System.out.println("fling");
 		return false;
 	}
 
 	@Override
 	public boolean pan(float x, float y, float deltaX, float deltaY) {
-		System.out.println("pan");	
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
