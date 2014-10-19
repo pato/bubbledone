@@ -17,6 +17,7 @@ public class AndroidGetDate implements GetDate{
 	}
 	@Override
 	public void getDate(final TaskCreator taskCreator) {
+
 		
 		final Calendar c = Calendar.getInstance();
 		final int mYear = c.get(Calendar.YEAR);
