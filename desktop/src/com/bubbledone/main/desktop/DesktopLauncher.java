@@ -11,7 +11,7 @@ public class DesktopLauncher {
 		config.title = "BubbleDone";
 		config.width = BubbleScreen.width * 4;
 		config.height = BubbleScreen.height * 4;
-		new LwjglApplication(new BubbleDone(), config);
+		new LwjglApplication(new BubbleDone(new NativeGetDate()), config);
 	}
 }
 

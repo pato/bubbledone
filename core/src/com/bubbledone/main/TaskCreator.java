@@ -6,10 +6,12 @@ package com.bubbledone.main;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.bubbledone.interfaces.GetDate;
 
 public class TaskCreator implements Screen {
 
@@ -22,13 +24,16 @@ public class TaskCreator implements Screen {
 	private String[] prompts = { "Task", "Time to Completion (minutes)",
 			"Due date (MM/DD/YY)", "Due time (HH:MM)" };
 	protected BubbleDone parent;
-	SimpleDateFormat sdfNums = new SimpleDateFormat("MM/dd/yyyy HH:mm",
+	SimpleDateFormat sdfNums = new SimpleDateFormat("MM/dd/yyyy",
 			Locale.US);
 	SimpleDateFormat sdfLetters = new SimpleDateFormat("MMM dd, yyyy HH:mm",
 			Locale.US);
+	GetDate getDate;
 
-	public TaskCreator(BubbleDone parent) {
+	public TaskCreator(BubbleDone parent, GetDate getDate) {
+		this.getDate = getDate;
 		this.parent = parent;
+		dueDate = new GregorianCalendar();
 
 		Gdx.input.getTextInput(new TextInput(TaskCreator.this), prompts[i],
 				"My task");
@@ -37,21 +42,19 @@ public class TaskCreator implements Screen {
 	public void next(Calendar cal) {
 		this.dueDate = cal;
 		i++;
-		Gdx.input.getTextInput(new TextInput(TaskCreator.this), prompts[i],
-				"12:00");
+		getDate.getDueTime(TaskCreator.this);
 	}
 
 	public void next(long time) {
 		if (i == 1) {
 			i++;
 			timeToComplete = (int) time;
-			Gdx.input.getTextInput(new TextInput(TaskCreator.this), prompts[i],
-					"10/20/14");
+			getDate.getDate(TaskCreator.this);
 		}
 		if (i == 3) {
 			dueDate.set(Calendar.HOUR_OF_DAY, (int) (time / 60));
 			dueDate.set(Calendar.MINUTE, (int) (time % 60));
-			TaskBubble t = new TaskBubble(new Task(bubbleProperties[0],
+			TaskBubble t = new TaskBubble(new Task(task,
 					dueDate, timeToComplete), 0, 100, 0);
 			parent.addBubble(t);
 			parent.setBubbleScreen();
@@ -61,8 +64,36 @@ public class TaskCreator implements Screen {
 	public void next(String text) {
 		if(i == 0){
 			i++;
-			Gdx.input.getTextInput(new TextInput(TaskCreator.this), prompts[i],
-					"30");
+			task = text;
+			getDate.getEstimatedDuration(TaskCreator.this);
+		} if(i == 1){
+			if(!text.trim().matches("\\d+")){
+				getDate.getEstimatedDuration(TaskCreator.this);
+			}else{
+				next(Long.parseLong(text.trim()));
+			}
+		} if(i == 2){
+			if(! text.trim().matches("\\d{1,2}/\\d{1,2}/\\d{2,4}")){
+				getDate.getDate(TaskCreator.this);
+			}else{
+				try {
+					dueDate.setTime(sdfNums.parse(text));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				next(dueDate);
+			}
+		} if(i == 3){
+			// assert number
+			if(!text.trim().matches("\\d{1,2}:\\d{1,2}")){
+				getDate.getDueTime(TaskCreator.this);
+			}else{
+				String[] arr = text.trim().split(":");
+				long hour = Long.parseLong(arr[0]);
+				long minute = Long.parseLong(arr[1]);
+				next(hour * 60 + minute);				
+			}
 		}
 	}
 
