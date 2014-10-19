@@ -45,7 +45,7 @@ public class BubbleWorldRenderer {
 			TaskBubbleRenderer.render(world, b, cam, shapeRenderer);
 		}
 
-		// draw button
+		// conditionally draw button
 		if (world.getCreateButton().isVisible())
 			CreateButtonRenderer.render(world, world.getCreateButton(), cam, shapeRenderer);
 		
