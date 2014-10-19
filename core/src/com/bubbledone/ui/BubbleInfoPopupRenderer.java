@@ -13,6 +13,7 @@ public class BubbleInfoPopupRenderer {
 	private static final float buttonWidth = (BubbleScreen.world.getWidth() - 20) / 2 - (1.5f * buttonPad);
 	public static final Rectangle deleteBtn = new Rectangle(10 + buttonPad, (BubbleScreen.world.getHeight() - 15) - buttonHeight, buttonWidth, buttonHeight);
 	public static final Rectangle doneBtn = new Rectangle(10 + buttonPad * 2 + buttonWidth, (BubbleScreen.world.getHeight() - 15) - buttonHeight, buttonWidth, buttonHeight);
+	
 	public static void render(BubbleWorld world, BubbleInfoPopup popup, OrthographicCamera cam, ShapeRenderer shapeRenderer) {
 		shapeRenderer.begin(ShapeType.Filled);
 		
@@ -57,6 +58,15 @@ public class BubbleInfoPopupRenderer {
         text = "Finish";
         world.getFont().draw(world.getBatch(), text, doneBtn.x - world.getFont().getBounds(text).width / 2 + doneBtn.width / 2,
         		doneBtn.y - world.getFont().getBounds(text).height / 2 + deleteBtn.height / 2);
+        
+        text = popup.getTaskBubble().getName();
+        world.getFont().draw(world.getBatch(), text, world.getWidth() / 2 - world.getFont().getBounds(text).width / 2,
+        		20);
+        
+        text = popup.getTaskBubble().getTask().getNotes();
+        world.getFont().drawMultiLine(world.getBatch(), text, world.getWidth() / 2 - world.getFont().getMultiLineBounds(text).width / 2,
+        		40);
+        
         world.getBatch().end();
 	}
 }

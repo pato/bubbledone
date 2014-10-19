@@ -45,6 +45,10 @@ public class BubbleWorld {
 		Task t2 = new Task("Shave", c);
 		Task t3 = new Task("Call mom", c);
 		Task t4 = new Task("Get job", c);
+		t.setNotes("Ran out of underwear,\nneed to do laundry");
+		t2.setNotes("Beard has gotten out\nof hand, I look\nhomeless");
+		t3.setNotes("Need to remind my mom\nthat I am still alive");
+		t4.setNotes("Should probably start\nlooking for a job");
 		bubbles.add(new TaskBubble(t,10,10,10));
 		bubbles.add(new TaskBubble(t2,100,100,10));
 		bubbles.add(new TaskBubble(t3,100,180,30));
