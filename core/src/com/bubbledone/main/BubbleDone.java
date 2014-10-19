@@ -31,7 +31,7 @@ public class BubbleDone extends Game {
 	}
 	
 	public void setTaskScreen(){
-		setScreen(new TaskCreator(BubbleDone.this));
+		setScreen(new TaskCreator(BubbleDone.this, getDate));
 	}
 	
 	@Override
