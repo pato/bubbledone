@@ -17,6 +17,8 @@ public class BubbleWorld {
 	Attractor attractor;
 	List<TaskBubble> bubbles;
 	CreateButton createBtn;
+	BubbleInfoPopup bubblePopup;
+	
 	private SpriteBatch batch;
 	private BitmapFont font;
 	private Vector2 dimensions;
@@ -112,6 +114,10 @@ public class BubbleWorld {
 	
 	public CreateButton getCreateButton() {
 		return createBtn;
+	}
+	
+	public BubbleInfoPopup getBubbleInfoPopup() {
+		return bubblePopup;
 	}
 	
 	public float getWidth() {

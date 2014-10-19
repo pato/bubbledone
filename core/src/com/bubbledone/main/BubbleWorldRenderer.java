@@ -53,6 +53,9 @@ public class BubbleWorldRenderer {
 
 		// draw button
 		CreateButtonRenderer.render(world, world.getCreateButton(), cam, shapeRenderer);
+		
+		// conditionally draw bubble info popup
+		BubbleInfoPopupRenderer.render(world, world.getBubbleInfoPopup(), cam, shapeRenderer);
     }
 	
 	public void dispose() {
