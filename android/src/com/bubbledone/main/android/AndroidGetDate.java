@@ -15,6 +15,7 @@ public class AndroidGetDate implements GetDate{
 	public AndroidGetDate(Context context) {
 		this.context = context;
 	}
+	
 	@Override
 	public void getDate(final TaskCreator taskCreator) {
 

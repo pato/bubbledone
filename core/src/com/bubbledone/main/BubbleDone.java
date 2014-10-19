@@ -5,12 +5,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.bubbledone.interfaces.GetDate;
 import com.bubbledone.screens.BubbleScreen;
 
 public class BubbleDone extends Game {
 	
 	protected BubbleScreen bubbles;
 	private TaskCreator tasks;
+	
+	private GetDate getDate;
+	
+	public BubbleDone(GetDate getDate) {
+		this.getDate = getDate;
+	}
 
 	@Override
 	public void create() {
