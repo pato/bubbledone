@@ -10,12 +10,14 @@ import com.bubbledone.main.BubbleWorldRenderer;
 public class BubbleScreen implements Screen {
 	private BubbleWorld world;
 	private BubbleWorldRenderer renderer;
+	public static final int width = 136;
+	public static final int height = 204;
 	BubbleDone parent;
     
     public BubbleScreen(BubbleDone parent) {
     	this.parent = parent;
         Gdx.app.log("GameScreen", "Attached");
-        world = new BubbleWorld(136, 204);
+        world = new BubbleWorld(width, height);
         renderer = new BubbleWorldRenderer(world);
     }
 
