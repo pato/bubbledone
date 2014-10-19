@@ -46,7 +46,7 @@ public class Task {
 //		a = (float) Math.min(estimatedTimeToCompletion / time, 1.);
 //		a = (float) Math.max(a, 0.);
 //		a = (float) Math.pow(a, 0.01);
-		float answer = (float) Math.pow((5 + 15.0 * Math.random()), 1);
+		float answer = (float) Math.pow((10 + 10.0 * Math.random()), 1);
 		System.err.println(answer);
 		return answer;
 	}
