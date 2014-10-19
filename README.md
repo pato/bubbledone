@@ -1,4 +1,4 @@
-BubbleDone -- a Neural Task Manager
+BubbleDone: A Neural Task Manager
 ===
 
 BubbleDone is a task manager that models the flow of thoughts more efficiently
