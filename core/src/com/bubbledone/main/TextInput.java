@@ -17,6 +17,7 @@ public class TextInput implements TextInputListener {
 
 	@Override
 	public void canceled() {
+		parent.parent.setBubbleScreen();
 	}
 	
 	

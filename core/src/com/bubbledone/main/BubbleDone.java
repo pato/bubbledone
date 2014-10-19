@@ -1,6 +1,7 @@
 package com.bubbledone.main;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -19,6 +20,7 @@ public class BubbleDone extends Game {
 	
 	public void setBubbleScreen(){
 		setScreen(bubbles);
+		Gdx.input.setInputProcessor(new InputHandler(bubbles.world, bubbles.renderer.cam));
 	}
 	
 	public void setTaskScreen(){

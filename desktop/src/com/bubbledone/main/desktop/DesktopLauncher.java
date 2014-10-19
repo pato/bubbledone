@@ -14,3 +14,4 @@ public class DesktopLauncher {
 		new LwjglApplication(new BubbleDone(), config);
 	}
 }
+

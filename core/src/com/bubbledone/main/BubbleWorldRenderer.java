@@ -14,7 +14,7 @@ import java.util.List;
 
 public class BubbleWorldRenderer {
 	private BubbleWorld world;
-	private OrthographicCamera cam;
+	OrthographicCamera cam;
 	private ShapeRenderer shapeRenderer;
 
 	public BubbleWorldRenderer(BubbleWorld world) {
