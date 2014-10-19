@@ -41,7 +41,7 @@ public class BubbleDone extends Game {
 	@Override
 	public void dispose() {
 		bubbles.dispose();
-		tasks.dispose();
+		//tasks.dispose();
 	}
 	
 	public void addBubble(TaskBubble bub){
