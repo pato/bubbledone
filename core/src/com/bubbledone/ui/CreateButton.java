@@ -8,7 +8,7 @@ public class CreateButton {
 	private Vector2 position;
 	
 	public CreateButton(float x, float y, float radius, boolean visible) {
-		this.position = new Vector2(x,y);
+		this.position = new Vector2(x - radius - radius * 0.2f, y - radius - radius * 0.2f);
 		this.radius = radius;
 		this.visible = visible;
 	}

@@ -26,7 +26,7 @@ public class BubbleWorld {
 		bubbles = new ArrayList<TaskBubble>();
 		//createBtn = new CreateButton(Gdx.graphics.getWidth() - 100, Gdx.graphics.getHeight() - 100, true);
 		//System.out.println(Gdx.graphics.getWidth() + " : " + Gdx.graphics.getHeight());
-		createBtn = new CreateButton(getWidth() - 15, getHeight() - 15, 15, true);
+		createBtn = new CreateButton(getWidth(), getHeight(), 15, true);
 		
 		Calendar c = Calendar.getInstance();
 		c.set(Calendar.YEAR, 2014);
