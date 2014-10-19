@@ -1,8 +1,11 @@
 package com.bubbledone.main;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
@@ -20,6 +23,9 @@ public class BubbleWorldRenderer {
 		cam.setToOrtho(true, 136, 204);
 		shapeRenderer = new ShapeRenderer();
 		shapeRenderer.setProjectionMatrix(cam.combined);
+		
+		world.getBatch().setProjectionMatrix(cam.combined);
+		
 		Gdx.input.setInputProcessor(new InputHandler(world.getBubbles(), cam));
 	}
 	
@@ -31,23 +37,9 @@ public class BubbleWorldRenderer {
 		AttractorRenderer.render(world, world.getAttractor(), cam, shapeRenderer);
 		
 		// draw bubbles
-        
         List<TaskBubble> bubbles = world.getBubbles();
-        
         for (TaskBubble b : bubbles) {
         	TaskBubbleRenderer.render(world, b, cam, shapeRenderer);
         }
-
-//        shapeRenderer.begin(ShapeType.Filled);
-//        shapeRenderer.setColor(87 / 255.0f, 109 / 255.0f, 120 / 255.0f, 1);
-//        shapeRenderer.rect(world.getRect().x, world.getRect().y,
-//        		world.getRect().width, world.getRect().height);
-//        shapeRenderer.end();
-//
-//        shapeRenderer.begin(ShapeType.Line);
-//        shapeRenderer.setColor(255 / 255.0f, 109 / 255.0f, 120 / 255.0f, 1);
-//        shapeRenderer.rect(world.getRect().x, world.getRect().y,
-//        		world.getRect().width, world.getRect().height);
-//        shapeRenderer.end();
     }
 }
