@@ -8,28 +8,15 @@ import com.bubbledone.interfaces.Circular;
  * Bubble class for task
  */
 
-public class TaskBubble extends Circular{
+public class TaskBubble extends Circular {
 	private Task task;
 	private Vector2 velocity;
 	
-	private Circle circle;
-
-	public TaskBubble(Task task, int x, int y, float radius) {
+	public TaskBubble(Task task, float x, float y, float radius) {
 		this.task = task;
         velocity = new Vector2(0, 0);
-        
         setPosition(x,y);
         setRadius(radius);
-        
-        circle = new Circle(getPosition(), radius);
-	}
-	
-	public Circle getCircle() {
-		return circle;
-	}
-	
-	public void setCircle(Circle circle) {
-		this.circle = circle;
 	}
 	
 	public Task getTask() {
@@ -47,6 +34,7 @@ public class TaskBubble extends Circular{
 	public void setVelocity(Vector2 velocity) {
 		this.velocity = velocity;
 	}
+
 	public void update(int x, int y, float x_vel, float y_vel, float radius) {
 		setPosition(x,y);
 		setRadius(radius);
