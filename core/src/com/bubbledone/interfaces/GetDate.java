@@ -3,4 +3,5 @@ import java.util.Calendar;
 
 public interface GetDate {
 	public Calendar getDate();
+	public long getTime();
 }
