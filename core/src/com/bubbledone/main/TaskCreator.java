@@ -30,72 +30,40 @@ public class TaskCreator implements Screen {
 	public TaskCreator(BubbleDone parent) {
 		this.parent = parent;
 
-		Gdx.input.getTextInput(new TextInput(TaskCreator.this), "New Task",
-				prompts[i]);
+		Gdx.input.getTextInput(new TextInput(TaskCreator.this), prompts[i],
+				"My task");
 	}
-	
-	public void next(Calendar cal){
+
+	public void next(Calendar cal) {
 		this.dueDate = cal;
-		Gdx.input.getTextInput(new TextInput(TaskCreator.this), prompts[i++],
+		i++;
+		Gdx.input.getTextInput(new TextInput(TaskCreator.this), prompts[i],
 				"12:00");
 	}
-	
-	public void next(long time){
+
+	public void next(long time) {
+		if (i == 1) {
+			i++;
+			timeToComplete = (int) time;
+			Gdx.input.getTextInput(new TextInput(TaskCreator.this), prompts[i],
+					"10/20/14");
+		}
+		if (i == 3) {
+			dueDate.set(Calendar.HOUR_OF_DAY, (int) (time / 60));
+			dueDate.set(Calendar.MINUTE, (int) (time % 60));
+			TaskBubble t = new TaskBubble(new Task(bubbleProperties[0],
+					dueDate, timeToComplete), 0, 100, 0);
+			parent.addBubble(t);
+			parent.setBubbleScreen();
+		}
 	}
 
 	public void next(String text) {
-		switch (i) {
-		case 0:
-			
-			break;
-		case 1:
-			if (!text.trim().matches("\\d+")) {
-				Gdx.input.getTextInput(new TextInput(TaskCreator.this),
-						"New Task", prompts[i]);
-			} else {
-				
-			}
-			break;
-		case 2:
-			if (text.trim().matches("\\d{1,2}/\\d{1,2}/\\d{2,4}")) {
-
-			} else if (text.trim().matches("\\w{3,4}\\s+\\d{1,2},\\s+\\d{2,4}")) {
-
-			} else {
-				Gdx.input.getTextInput(new TextInput(TaskCreator.this),
-						"New Task", prompts[i]);
-			}
-			break;
-		case 3:
-			if (!text.trim().matches("\\d{1,2}:\\d{2}")) {
-				Gdx.input.getTextInput(new TextInput(TaskCreator.this),
-						"New Task", prompts[i]);
-			}
-			break;
-//		if (i >= 4) {
-//			Calendar cal = Calendar.getInstance();
-//			System.err.println("making task");
-//			try {
-//				if (bubbleProperties[2].trim().matches(
-//						"\\d{1,2}/\\d{1,2}/\\d{2,4}")) {
-//					cal.setTime(sdfNums.parse(bubbleProperties[2] + " "
-//							+ bubbleProperties[3]));
-//				} else if (bubbleProperties[2].trim().matches(
-//						"\\w{3,4}\\s+\\d{1,2},\\s+\\d{2,4}")) {
-//					cal.setTime(sdfLetters.parse(bubbleProperties[2] + " "
-//							+ bubbleProperties[3]));
-//				}
-//				TaskBubble t = new TaskBubble(new Task(bubbleProperties[0],
-//						cal, Long.parseLong(bubbleProperties[1])), 0, 100, 0);
-//				parent.addBubble(t);
-//				parent.setBubbleScreen();
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//			}
-//
-//			return;
+		if(i == 0){
+			i++;
+			Gdx.input.getTextInput(new TextInput(TaskCreator.this), prompts[i],
+					"30");
 		}
-
 	}
 
 	@Override
