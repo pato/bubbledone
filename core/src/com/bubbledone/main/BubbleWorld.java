@@ -27,6 +27,7 @@ public class BubbleWorld {
 	
 	public BubbleWorld(float width, float height, BubbleScreen parent) {
 		bubblePopup = new BubbleInfoPopup();
+		bubblePopup.display();
 		this.parent = parent;
 		dimensions = new Vector2(width, height);
 		attractor = new Attractor(10,10, width/2 - 10, height/2);

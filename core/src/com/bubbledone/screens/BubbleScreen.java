@@ -9,7 +9,7 @@ import com.bubbledone.main.BubbleWorldRenderer;
 import com.bubbledone.main.TaskBubble;
 
 public class BubbleScreen implements Screen {
-	public BubbleWorld world;
+	public static BubbleWorld world;
 	public BubbleWorldRenderer renderer;
 	public static final int width = 136;
 	public static final int height = 204;
