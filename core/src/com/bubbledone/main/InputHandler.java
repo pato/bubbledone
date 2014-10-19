@@ -1,10 +1,8 @@
 package com.bubbledone.main;
 
-import java.util.GregorianCalendar;
-import java.util.List;
-
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -14,10 +12,14 @@ public class InputHandler implements InputProcessor {
 	private TaskBubble last = null;
 	private BubbleWorld world;
 	private OrthographicCamera cam;
+	private GestureDetector detector;
+	private TouchHandler handler;
 	
 	public InputHandler(BubbleWorld world, OrthographicCamera cam) {
 		this.world = world;
 		this.cam = cam;
+		handler = new TouchHandler();
+		detector = new GestureDetector(handler);
 	}
 	
 	@Override
