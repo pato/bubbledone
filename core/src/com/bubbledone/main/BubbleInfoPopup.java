@@ -13,6 +13,9 @@ public class BubbleInfoPopup {
 	public void hide() {
 		display = false;
 	}
+	public boolean isVisible() {
+		return display;
+	}
 	public void setTaskBubble(TaskBubble bubble) {
 		this.bubble = bubble;
 	}
