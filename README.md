@@ -1,4 +1,4 @@
-BubbleDone -- a Neural Task Manager
+BubbleDone: A Neural Task Manager
 ===
 
 BubbleDone is a task manager that models the flow of thoughts more efficiently
@@ -13,6 +13,7 @@ remind you constantly about tasks you have yet to finish, BubbleDone simply
 encourages you to finish the tasks in the center, rather than cluttering your
 notification screen with incessant reminders.
 
-BubbleDone was created for HackTX by Rohan Ramchand (@rohan), Pato Lankenau
-(@pato), Tres Popp (@tpopp), and Will Yager (@wyager), all University of Texas
+BubbleDone was created for HackTX by Rohan Ramchand
+([@rohan](http://github.com/rohan)), Pato Lankenau
+([@pato](http://github.com/pato)), Tres Popp ([@tpopp](http://github.com/tpopp)), and Will Yager ([@wyager](http://github.com/wyager)), all University of Texas
 at Austin Class of 2017.
