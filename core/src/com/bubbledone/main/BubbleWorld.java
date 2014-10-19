@@ -49,9 +49,9 @@ public class BubbleWorld {
 		bubbles.add(new TaskBubble(t3,100,180,30));
 		bubbles.add(new TaskBubble(t4,100,150,10));
 		
-		font = new BitmapFont(true);
+		font = new BitmapFont(Gdx.files.internal("arial.fnt"), Gdx.files.internal("arial.png"), true);
         font.setColor(Color.WHITE);
-        font.setScale(0.4f);
+        font.setScale(0.25f);
         batch = new SpriteBatch();
 	}
 	
