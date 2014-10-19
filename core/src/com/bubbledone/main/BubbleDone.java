@@ -1,7 +1,6 @@
 package com.bubbledone.main;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
 import com.bubbledone.screens.BubbleScreen;
 
 public class BubbleDone extends Game {

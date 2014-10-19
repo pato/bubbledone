@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+
 import java.util.List;
 
 public class BubbleWorldRenderer {
@@ -19,6 +20,7 @@ public class BubbleWorldRenderer {
 		cam.setToOrtho(true, 136, 204);
 		shapeRenderer = new ShapeRenderer();
 		shapeRenderer.setProjectionMatrix(cam.combined);
+		Gdx.input.setInputProcessor(new InputHandler(world.getBubbles(), cam));
 	}
 	
 	public void render() {
