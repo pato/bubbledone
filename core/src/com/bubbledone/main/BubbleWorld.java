@@ -25,7 +25,7 @@ public class BubbleWorld {
 	public BubbleWorld(float width, float height, BubbleScreen parent) {
 		this.parent = parent;
 		dimensions = new Vector2(width, height);
-		attractor = new Attractor(10, 10, 50, 50);
+		attractor = new Attractor(10,10, width/2 - 10, height/2);
 		bubbles = new ArrayList<TaskBubble>();
 		//createBtn = new CreateButton(Gdx.graphics.getWidth() - 100, Gdx.graphics.getHeight() - 100, true);
 		//System.out.println(Gdx.graphics.getWidth() + " : " + Gdx.graphics.getHeight());
