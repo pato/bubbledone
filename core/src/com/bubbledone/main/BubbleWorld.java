@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.bubbledone.interfaces.Circular;
+import com.bubbledone.ui.CreateButton;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,12 +15,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class BubbleWorld {
 	Attractor attractor;
 	List<TaskBubble> bubbles;
+	CreateButton createBtn;
 	private SpriteBatch batch;
 	private BitmapFont font;
+	private Vector2 dimensions;
 	
-	public BubbleWorld() {	
+	public BubbleWorld(float width, float height) {	
+		dimensions = new Vector2(width, height);
 		attractor = new Attractor(10, 10, 50, 50);
 		bubbles = new ArrayList<TaskBubble>();
+		//createBtn = new CreateButton(Gdx.graphics.getWidth() - 100, Gdx.graphics.getHeight() - 100, true);
+		//System.out.println(Gdx.graphics.getWidth() + " : " + Gdx.graphics.getHeight());
+		createBtn = new CreateButton(getWidth() - 15, getHeight() - 15, 15, true);
 		
 		Calendar c = Calendar.getInstance();
 		c.set(Calendar.YEAR, 2014);
@@ -47,7 +55,6 @@ public class BubbleWorld {
 	}
 	
 	public void update(float delta) {
-		System.out.println(delta);
 		List<Vector2> new_velocities = new ArrayList<Vector2>();
 		List<Vector2> new_positions = new ArrayList<Vector2>();
 		for(int affectee_i=0; affectee_i<bubbles.size(); affectee_i++){
@@ -71,7 +78,6 @@ public class BubbleWorld {
 			float drag = (float) 0.005;
 			velocity.scl(1-drag);
 			Vector2 position = affectee.getPosition().cpy().add(velocity.cpy().scl(delta));
-			System.out.println("dp:" + velocity.cpy().scl(delta));
 			new_velocities.add(velocity);
 			new_positions.add(position);
 		}
@@ -95,5 +101,16 @@ public class BubbleWorld {
 	
 	public SpriteBatch getBatch() {
 		return batch;
+	}
+	
+	public CreateButton getCreateButton() {
+		return createBtn;
+	}
+	
+	public float getWidth() {
+		return dimensions.x;
+	}
+	public float getHeight() {
+		return dimensions.y;
 	}
 }

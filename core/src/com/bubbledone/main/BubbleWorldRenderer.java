@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.bubbledone.ui.CreateButtonRenderer;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class BubbleWorldRenderer {
 		this.world = world;
 
 		cam = new OrthographicCamera();
-		cam.setToOrtho(true, 136, 204);
+		cam.setToOrtho(true, world.getWidth(), world.getHeight());
 		shapeRenderer = new ShapeRenderer();
 		shapeRenderer.setProjectionMatrix(cam.combined);
 		
@@ -41,5 +42,8 @@ public class BubbleWorldRenderer {
         for (TaskBubble b : bubbles) {
         	TaskBubbleRenderer.render(world, b, cam, shapeRenderer);
         }
+        
+		// draw button
+		CreateButtonRenderer.render(world, world.getCreateButton(), cam, shapeRenderer);
     }
 }
