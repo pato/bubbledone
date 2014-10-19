@@ -8,7 +8,7 @@ import com.bubbledone.screens.BubbleScreen;
 
 public class BubbleDone extends Game {
 	
-	private BubbleScreen bubbles;
+	protected BubbleScreen bubbles;
 	private TaskCreator tasks;
 
 	@Override
@@ -27,5 +27,9 @@ public class BubbleDone extends Game {
 	
 	@Override
 	public void dispose() {
+	}
+	
+	public void addBubble(TaskBubble bub){
+		bubbles.addTaskBubble(bub);
 	}
 }

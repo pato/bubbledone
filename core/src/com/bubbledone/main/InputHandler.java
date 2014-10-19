@@ -45,7 +45,7 @@ public class InputHandler implements InputProcessor {
 		// if you pressed the create button
 		CreateButton btn = world.getCreateButton();
 		if (new Circle(btn.getX(), btn.getY(), btn.getRadius()).contains(new Vector2(coords.x, coords.y))) {
-			// STICK IT IN
+			world.newBubble();
 		}
 		
 		// or if you pressed on a new bubble

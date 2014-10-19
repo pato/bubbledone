@@ -16,7 +16,7 @@ public class TaskBubble extends Circular {
 		this.task = task;
         velocity = new Vector2(0, 0);
         setPosition(x,y);
-        setRadius(radius);
+        setRadius(task.getPriority());
 	}
 	
 	public Task getTask() {

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.bubbledone.main.BubbleDone;
 import com.bubbledone.main.BubbleWorld;
 import com.bubbledone.main.BubbleWorldRenderer;
+import com.bubbledone.main.TaskBubble;
 
 public class BubbleScreen implements Screen {
 	private BubbleWorld world;
@@ -15,7 +16,7 @@ public class BubbleScreen implements Screen {
     public BubbleScreen(BubbleDone parent) {
     	this.parent = parent;
         Gdx.app.log("GameScreen", "Attached");
-        world = new BubbleWorld(136, 204);
+        world = new BubbleWorld(136, 204, BubbleScreen.this);
         renderer = new BubbleWorldRenderer(world);
     }
 
@@ -53,6 +54,14 @@ public class BubbleScreen implements Screen {
     @Override
     public void dispose() {
         // Leave blank
+    }
+    
+    public void addTaskBubble(TaskBubble bubble){
+    	world.addTaskBubble(bubble);
+    }
+    
+    public void setTaskScreen(){
+    	parent.setTaskScreen();
     }
 
 }

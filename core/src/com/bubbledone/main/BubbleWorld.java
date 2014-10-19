@@ -7,6 +7,7 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.bubbledone.interfaces.Circular;
+import com.bubbledone.screens.BubbleScreen;
 import com.bubbledone.ui.CreateButton;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -19,8 +20,10 @@ public class BubbleWorld {
 	private SpriteBatch batch;
 	private BitmapFont font;
 	private Vector2 dimensions;
+	private BubbleScreen parent;
 	
-	public BubbleWorld(float width, float height) {	
+	public BubbleWorld(float width, float height, BubbleScreen parent) {
+		this.parent = parent;
 		dimensions = new Vector2(width, height);
 		attractor = new Attractor(10, 10, 50, 50);
 		bubbles = new ArrayList<TaskBubble>();
@@ -116,5 +119,10 @@ public class BubbleWorld {
 	}
 	public float getHeight() {
 		return dimensions.y;
+	}
+
+	public void newBubble() {
+		parent.setTaskScreen();
+		
 	}
 }
