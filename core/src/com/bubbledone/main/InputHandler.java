@@ -12,14 +12,12 @@ public class InputHandler implements InputProcessor {
 	private TaskBubble last = null;
 	private BubbleWorld world;
 	private OrthographicCamera cam;
-	private GestureDetector detector;
-	private TouchHandler handler;
+	
+	private long last_tap = 0L;
 	
 	public InputHandler(BubbleWorld world, OrthographicCamera cam) {
 		this.world = world;
 		this.cam = cam;
-		handler = new TouchHandler();
-		detector = new GestureDetector(handler);
 	}
 	
 	@Override
@@ -42,6 +40,16 @@ public class InputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		long time = System.nanoTime();
+		if (last_tap == 0) {
+			last_tap = time;
+		} else {
+			if (time - last_tap <= 1000000000) {
+				System.out.println("double tap");
+			}
+			last_tap = 0;
+		}
+		System.out.println("last_tap " + last_tap + " time " + time);
 		Vector3 coords = cam.unproject(new Vector3(screenX, screenY, 0));
 		
 		// if you pressed the create button
