@@ -24,9 +24,17 @@ public class BubbleInfoPopupRenderer {
         shapeRenderer.setColor(83 / 255.0f, 109 / 255.0f, 254 / 255.0f, 1); //#536DFE
         shapeRenderer.rect(10, 10, world.getWidth() - 20, world.getHeight() - 20);
         
+        // delete button shadow
+        shapeRenderer.setColor(221 / 255.0f, 44 / 255.0f, 0 / 255.0f, 1); //#dd2c00
+        shapeRenderer.rect(deleteBtn.x + 1, deleteBtn.y + 1, deleteBtn.width, deleteBtn.height);
+        
         // delete button
         shapeRenderer.setColor(255 / 255.0f, 61 / 255.0f, 0 / 255.0f, 1); //#ff3d00
         shapeRenderer.rect(deleteBtn.x, deleteBtn.y, deleteBtn.width, deleteBtn.height);
+        
+        // done button shadow
+        shapeRenderer.setColor(18 / 255.0f, 199 / 255.0f, 0 / 255.0f, 1); //#14e715
+        shapeRenderer.rect(doneBtn.x + 1, doneBtn.y + 1, doneBtn.width, doneBtn.height);
         
         // done button
         shapeRenderer.setColor(20 / 255.0f, 231 / 255.0f, 21 / 255.0f, 1); //#14e715
