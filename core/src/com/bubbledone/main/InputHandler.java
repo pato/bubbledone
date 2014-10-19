@@ -12,14 +12,10 @@ public class InputHandler implements InputProcessor {
 	private TaskBubble last = null;
 	private BubbleWorld world;
 	private OrthographicCamera cam;
-	private GestureDetector detector;
-	private TouchHandler handler;
 	
 	public InputHandler(BubbleWorld world, OrthographicCamera cam) {
 		this.world = world;
 		this.cam = cam;
-		handler = new TouchHandler();
-		detector = new GestureDetector(handler);
 	}
 	
 	@Override

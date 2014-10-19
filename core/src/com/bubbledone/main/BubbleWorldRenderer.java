@@ -3,19 +3,19 @@ package com.bubbledone.main;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.input.GestureDetector;
 import com.bubbledone.ui.CreateButtonRenderer;
-
-import java.util.List;
 
 public class BubbleWorldRenderer {
 	private BubbleWorld world;
 	OrthographicCamera cam;
 	private ShapeRenderer shapeRenderer;
+	
+	private TouchHandler touchHandler;
 
 	public BubbleWorldRenderer(BubbleWorld world) {
 		this.world = world;
@@ -27,7 +27,14 @@ public class BubbleWorldRenderer {
 		
 		world.getBatch().setProjectionMatrix(cam.combined);
 		
-		Gdx.input.setInputProcessor(new InputHandler(world, cam));
+		//Gdx.input.setInputProcessor(new InputHandler(world, cam));
+		touchHandler = new TouchHandler(world, cam);
+		//Gdx.input.setInputProcessor(new GestureDetector(touchHandler));
+		
+		InputMultiplexer multiplexer = new InputMultiplexer();
+		multiplexer.addProcessor(new InputHandler(world, cam));
+		multiplexer.addProcessor(new GestureDetector(touchHandler));
+		Gdx.input.setInputProcessor(multiplexer);
 	}
 	
 	public void render() {
