@@ -27,7 +27,7 @@ public class BubbleWorldRenderer {
 		
 		world.getBatch().setProjectionMatrix(cam.combined);
 		
-		Gdx.input.setInputProcessor(new InputHandler(world.getBubbles(), cam));
+		Gdx.input.setInputProcessor(new InputHandler(world, cam));
 	}
 	
 	public void render() {
