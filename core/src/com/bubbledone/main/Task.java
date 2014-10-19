@@ -1,6 +1,7 @@
 package com.bubbledone.main;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Task {
 	private boolean isComplete;
@@ -18,17 +19,34 @@ public class Task {
 		this.priority = calcPriority(dueDate);
 		this.notes = "";
 	}
-	
+
 	private float calcPriority(Calendar dueDate2) {
-		double time = Math.abs(dueDate2.getTimeInMillis() - Calendar.getInstance().getTimeInMillis());
-		if(time > 1209600000){
-			time = 1209600000;
+		double time = Math.abs(dueDate2.getTimeInMillis() - new GregorianCalendar().getTimeInMillis()) - 6.0113960866016E13;
+		time /= 10000;
+		System.out.println(time);
+		double a = 0.0;
+		if(time > 1209600000/2){
+			a = 1.0/15;
+		}else if(time > 1209600000/4){
+			a = 1.0/12;
+		}else if(time > 1209600000/6){
+			a = 1.0/10;
+		}else if(time > 1209600000/8){
+			a = 1.0/8;
+		}else if(time > 1209600000/10){
+			a = 1.0/6;
+		}else if(time > 1209600000/12){
+			a = 1.0/5;
+		}else if(time > 1209600000/14){
+			a = 1.0/2;
+		}else {
+			a = 1.0/1;
 		}
-		System.err.println(time);
-		float a = (float) Math.min(estimatedTimeToCompletion / time, 1.);
-		a = (float) Math.max(a, 0.);
-		a = (float) Math.pow(a, 0.075);
-		float answer = (float) Math.pow((5 + 15.0 * a), 1);
+//		System.err.println(time);
+//		a = (float) Math.min(estimatedTimeToCompletion / time, 1.);
+//		a = (float) Math.max(a, 0.);
+//		a = (float) Math.pow(a, 0.01);
+		float answer = (float) Math.pow((5 + 15.0 * Math.random()), 1);
 		System.err.println(answer);
 		return answer;
 	}
@@ -41,7 +59,6 @@ public class Task {
 		this.priority = calcPriority(dueDate);
 		this.notes = "";
 	}
-
 
 	public long getEstimatedTimeToCompletion() {
 		return estimatedTimeToCompletion;
