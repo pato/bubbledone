@@ -1,10 +1,10 @@
-package com.bubbledone.platformspecific;
+package com.bubbledone.main.desktop;
 
 import java.util.Calendar;
 
 import com.bubbledone.interfaces.GetDate;
 
-public class AndroidGetDate implements GetDate{
+public class NativeGetDate implements GetDate{
 
 	@Override
 	public Calendar getDate() {
