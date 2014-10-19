@@ -4,7 +4,7 @@ import java.util.Calendar;
 import com.bubbledone.main.TaskCreator;
 
 public interface GetDate {
-	public Calendar getDate(TaskCreator taskCreator);
-	public long getEstimatedDuration(TaskCreator taskCreator);
-	public long getDueTime(TaskCreator taskCreator);
+	public void getDate(TaskCreator taskCreator);
+	public void getEstimatedDuration(TaskCreator taskCreator);
+	public void getDueTime(TaskCreator taskCreator);
 }
