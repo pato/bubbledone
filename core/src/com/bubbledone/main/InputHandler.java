@@ -8,14 +8,15 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.bubbledone.ui.CreateButton;
 
 public class InputHandler implements InputProcessor {
 	private TaskBubble last = null;
-	private List<TaskBubble> list;
+	private BubbleWorld world;
 	private OrthographicCamera cam;
 	
-	public InputHandler(List<TaskBubble> list, OrthographicCamera cam) {
-		this.list = list;
+	public InputHandler(BubbleWorld world, OrthographicCamera cam) {
+		this.world = world;
 		this.cam = cam;
 	}
 	
@@ -40,14 +41,19 @@ public class InputHandler implements InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		Vector3 coords = cam.unproject(new Vector3(screenX, screenY, 0));
-		System.out.println("DRAG x: " + coords.x + " y: " + coords.y + " pointer: " + pointer);
+		
+		// if you pressed the create button
+		CreateButton btn = world.getCreateButton();
+		if (new Circle(btn.getX(), btn.getY(), btn.getRadius()).contains(new Vector2(coords.x, coords.y))) {
+			// STICK IT IN
+		}
+		
+		// or if you pressed on a new bubble
 		TaskBubble task = null;
 		if (last != null) return true;
 		else {
-			for (TaskBubble t : list) {
-				System.out.println(t.getPosition().x + " " + t.getPosition().y + " " + t.getRadius());
+			for (TaskBubble t : world.getBubbles()) {
 				if (new Circle(t.getPosition(), t.getRadius()).contains(new Vector2(coords.x, coords.y))) {
-					System.out.println("found something");
 					task = t;
 				}
 			}

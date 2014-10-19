@@ -15,7 +15,7 @@ public class BubbleScreen implements Screen {
     public BubbleScreen(BubbleDone parent) {
     	this.parent = parent;
         Gdx.app.log("GameScreen", "Attached");
-        world = new BubbleWorld();
+        world = new BubbleWorld(136, 204);
         renderer = new BubbleWorldRenderer(world);
     }
 
