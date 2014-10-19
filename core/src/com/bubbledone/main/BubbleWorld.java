@@ -45,6 +45,10 @@ public class BubbleWorld {
         batch = new SpriteBatch();
 	}
 	
+	public void addTaskBubble(TaskBubble bubble) {
+		this.bubbles.add(bubble);
+	}
+	
 	private Vector2 collide(Circular a, Circular b){
 		Vector2 diff = a.getPosition().cpy().sub(b.getPosition());
 		float radius = diff.len();
