@@ -1,6 +1,7 @@
 package com.bubbledone.main.android;
 
 import android.os.Bundle;
+import android.os.Looper;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
@@ -11,6 +12,6 @@ public class AndroidLauncher extends AndroidApplication {
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new BubbleDone(new AndroidGetDate(this.getContext())), config);
+		initialize(new BubbleDone(new AndroidGetDate(this)), config);
 	}
 }
