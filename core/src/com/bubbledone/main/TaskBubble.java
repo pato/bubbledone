@@ -2,25 +2,26 @@ package com.bubbledone.main;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
+import com.bubbledone.interfaces.Circular;
 
 /*
  * Bubble class for task
  */
 
-public class TaskBubble {
+public class TaskBubble extends Circular{
 	private Task task;
-	private Vector2 position, velocity;
-	private float radius;
+	private Vector2 velocity;
 	
 	private Circle circle;
 
-	public TaskBubble(Task task, float x, float y, float radius) {
+	public TaskBubble(Task task, int x, int y, float radius) {
 		this.task = task;
-        position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
-        this.radius = radius;
         
-        circle = new Circle(position, radius);
+        setPosition(x,y);
+        setRadius(radius);
+        
+        circle = new Circle(getPosition(), radius);
 	}
 	
 	public Circle getCircle() {
@@ -39,14 +40,6 @@ public class TaskBubble {
 		this.task = task;
 	}
 
-	public Vector2 getPosition() {
-		return position;
-	}
-
-	public void setPosition(Vector2 position) {
-		this.position = position;
-	}
-
 	public Vector2 getVelocity() {
 		return velocity;
 	}
@@ -54,18 +47,9 @@ public class TaskBubble {
 	public void setVelocity(Vector2 velocity) {
 		this.velocity = velocity;
 	}
-
-	public float getRadius() {
-		return radius;
-	}
-
-	public void setRadius(float radius) {
-		this.radius = radius;
-	}
-
-	public void update(float x, float y, float x_vel, float y_vel, float radius) {
-		position.set(x, y);
+	public void update(int x, int y, float x_vel, float y_vel, float radius) {
+		setPosition(x,y);
+		setRadius(radius);
 		velocity.set(x_vel, y_vel);
-		this.radius = radius;
 	}
 }
