@@ -22,7 +22,7 @@ public class BubbleWorld {
 		Task t = new Task("Clean clothes", c);
 		bubbles.add(new TaskBubble(t,10,10,10));
 		bubbles.add(new TaskBubble(t,100,100,10));
-		bubbles.add(new TaskBubble(t,100,180,30));
+		bubbles.add(new TaskBubble(t,100,180,10));
 	}
 	
 	private Vector2 collide(Circular a, Circular b){
