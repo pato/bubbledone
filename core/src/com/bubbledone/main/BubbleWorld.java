@@ -23,7 +23,20 @@ public class BubbleWorld {
 	}
 	
 	public void update(float delta) {
-		// physics stuff
+		List<TaskBubble> new_bubbles = new ArrayList<TaskBubble>();
+		for(int affectee_i=0; affectee_i<bubbles.size(); affectee_i++){
+			TaskBubble affectee = bubbles.get(affectee_i);
+			for(int affector_i=0; affector_i<bubbles.size(); affector_i++){
+				if(affector_i == affectee_i) continue; // Things don't affect themselves
+				TaskBubble affector = bubbles.get(affector_i);
+				double dx = affectee.getPosition().x - affector.getPosition().x;
+				double dy = affectee.getPosition().y - affector.getPosition().y;
+				double radius = Math.sqrt(dx*dx + dy*dy);
+				double distance = radius - affector.getRadius() - affectee.getRadius();
+				double force_mag = Math.exp(-20.0*distance);
+				double force_x = (dx/radius) * 
+			}
+		}
     }
 	
 	public Attractor getAttractor() {
