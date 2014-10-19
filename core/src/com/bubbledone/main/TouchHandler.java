@@ -11,6 +11,7 @@ public class TouchHandler implements GestureListener {
 	private BubbleWorld world;
 	private OrthographicCamera cam;
 
+	private long last_tap;
 	private TaskBubble last;
 
 	public TouchHandler(BubbleWorld world, OrthographicCamera cam) {
@@ -20,11 +21,18 @@ public class TouchHandler implements GestureListener {
 
 	@Override
 	public boolean touchDown(float x, float y, int pointer, int button) {
+		System.out.println("touch touch down");
 		return false;
 	}
 
 	@Override
 	public boolean tap(float x, float y, int count, int button) {
+		System.out.println("tap");
+		long time = System.nanoTime();
+		if (last_tap == 0) return false;
+		else if (time - last_tap <= 100000) {
+			System.out.println("Double tap");
+		}
 		return false;
 	}
 
@@ -53,7 +61,9 @@ public class TouchHandler implements GestureListener {
 			System.out.println("no match found");
 			return false;
 		}
-
+		
+		
+		
 		last = task;
 		return true;
 	}

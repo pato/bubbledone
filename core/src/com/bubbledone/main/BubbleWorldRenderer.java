@@ -27,9 +27,7 @@ public class BubbleWorldRenderer {
 		
 		world.getBatch().setProjectionMatrix(cam.combined);
 		
-		//Gdx.input.setInputProcessor(new InputHandler(world, cam));
 		touchHandler = new TouchHandler(world, cam);
-		//Gdx.input.setInputProcessor(new GestureDetector(touchHandler));
 		
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		multiplexer.addProcessor(new InputHandler(world, cam));
