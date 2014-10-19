@@ -50,8 +50,7 @@ public class TaskCreator implements Screen {
 			i++;
 			timeToComplete = (int) time;
 			getDate.getDate(TaskCreator.this);
-		}
-		if (i == 3) {
+		}else if (i == 3) {
 			dueDate.set(Calendar.HOUR_OF_DAY, (int) (time / 60));
 			dueDate.set(Calendar.MINUTE, (int) (time % 60));
 			TaskBubble t = new TaskBubble(new Task(task,
@@ -66,25 +65,24 @@ public class TaskCreator implements Screen {
 			i++;
 			task = text;
 			getDate.getEstimatedDuration(TaskCreator.this);
-		} if(i == 1){
+		} else if(i == 1){
 			if(!text.trim().matches("\\d+")){
 				getDate.getEstimatedDuration(TaskCreator.this);
 			}else{
 				next(Long.parseLong(text.trim()));
 			}
-		} if(i == 2){
+		} else if(i == 2){
 			if(! text.trim().matches("\\d{1,2}/\\d{1,2}/\\d{2,4}")){
 				getDate.getDate(TaskCreator.this);
 			}else{
 				try {
 					dueDate.setTime(sdfNums.parse(text));
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				next(dueDate);
 			}
-		} if(i == 3){
+		} else if(i == 3){
 			// assert number
 			if(!text.trim().matches("\\d{1,2}:\\d{1,2}")){
 				getDate.getDueTime(TaskCreator.this);
