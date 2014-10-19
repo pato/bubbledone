@@ -33,7 +33,7 @@ public class BubbleWorldRenderer {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		world.getBatch().begin();
-		world.getBatch().draw(world.getBackground() ,0, 0, 800, 480);
+		world.getBatch().draw(world.getBackground(), 0, 0, 800, 480);
 		world.getBatch().end();
 
 		// draw attractor
