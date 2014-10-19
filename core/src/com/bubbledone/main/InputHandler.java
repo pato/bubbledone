@@ -55,12 +55,14 @@ public class InputHandler implements InputProcessor {
 
 		if (world.getBubbleInfoPopup().isVisible()) {
 			if (BubbleInfoPopupRenderer.deleteBtn.contains(new Vector2(coords.x, coords.y))) {
-				System.out.println("deleting task");
+				//System.out.println("deleting task");
 				//world.getBubbleInfoPopup().getTaskBubble().fucking_delete();
 				world.getBubbleInfoPopup().hide();
 				world.getCreateButton().display();
 			} else if (BubbleInfoPopupRenderer.doneBtn.contains(new Vector2(coords.x, coords.y))) {
 				System.out.println("marking task done");
+				world.getBubbleInfoPopup().getTaskBubble().getTask().setComplete(true);
+				world.getBubbles().remove(world.getBubbleInfoPopup().getTaskBubble());
 				world.getBubbleInfoPopup().hide();
 				world.getCreateButton().display();
 			}
