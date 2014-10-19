@@ -9,8 +9,8 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "BubbleDone";
-		config.width = BubbleScreen.width * 2;
-		config.height = BubbleScreen.height * 2;
+		config.width = BubbleScreen.width * 4;
+		config.height = BubbleScreen.height * 4;
 		new LwjglApplication(new BubbleDone(), config);
 	}
 }
