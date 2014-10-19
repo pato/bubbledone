@@ -27,7 +27,7 @@ public class BubbleWorld {
 	
 	public BubbleWorld(float width, float height, BubbleScreen parent) {
 		bubblePopup = new BubbleInfoPopup();
-		bubblePopup.display();
+		//bubblePopup.display();
 		this.parent = parent;
 		dimensions = new Vector2(width, height);
 		attractor = new Attractor(10,10, width/2 - 10, height/2);
@@ -41,11 +41,13 @@ public class BubbleWorld {
 		c.set(Calendar.MONTH, 12);
 		c.set(Calendar.DAY_OF_MONTH, 24);
 		Task t = new Task("Clean clothes", c);
+		Task t2 = new Task("Shave", c);
+		Task t3 = new Task("Call mom", c);
+		Task t4 = new Task("Get job", c);
 		bubbles.add(new TaskBubble(t,10,10,10));
-		bubbles.add(new TaskBubble(t,100,100,10));
-		bubbles.add(new TaskBubble(t,100,180,30));
-		
-		bubbles.add(new TaskBubble(t,100,150,10));
+		bubbles.add(new TaskBubble(t2,100,100,10));
+		bubbles.add(new TaskBubble(t3,100,180,30));
+		bubbles.add(new TaskBubble(t4,100,150,10));
 		
 		font = new BitmapFont(true);
         font.setColor(Color.WHITE);
