@@ -41,6 +41,7 @@ public class TaskCreator implements Screen {
 
 	public void next(Calendar cal) {
 		this.dueDate = cal;
+		System.err.println("Got a calendar");
 		i++;
 		getDate.getDueTime(TaskCreator.this);
 	}
@@ -49,12 +50,14 @@ public class TaskCreator implements Screen {
 		if (i == 1) {
 			i++;
 			timeToComplete = (int) time;
+			System.err.println("Step 2 finished");
 			getDate.getDate(TaskCreator.this);
 		}else if (i == 3) {
+			System.err.println("Finishing this junk");
 			dueDate.set(Calendar.HOUR_OF_DAY, (int) (time / 60));
 			dueDate.set(Calendar.MINUTE, (int) (time % 60));
 			TaskBubble t = new TaskBubble(new Task(task,
-					dueDate, timeToComplete), 0, 100, 0);
+					dueDate, timeToComplete), 20, 20, 0);
 			parent.addBubble(t);
 			parent.setBubbleScreen();
 		}
@@ -63,6 +66,7 @@ public class TaskCreator implements Screen {
 	public void next(String text) {
 		if(i == 0){
 			i++;
+			System.err.println("Step 1 finished");
 			task = text;
 			getDate.getEstimatedDuration(TaskCreator.this);
 		} else if(i == 1){

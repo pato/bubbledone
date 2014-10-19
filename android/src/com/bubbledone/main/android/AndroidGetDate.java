@@ -15,9 +15,19 @@ import com.bubbledone.main.TaskCreator;
 
 public class AndroidGetDate implements GetDate{
 	private AndroidApplication application;
+	private int ii = 0;
 	
 	public AndroidGetDate(AndroidApplication application) {
 		this.application = application;
+	}
+	
+	protected boolean inc(){
+		return (ii++ == 0);
+	}
+	
+	protected boolean dec(){
+		ii = 0;
+		return false;
 	}
 	
 	@Override
@@ -35,6 +45,9 @@ public class AndroidGetDate implements GetDate{
 				 
 				            @Override
 				            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+				            	if(!inc()){
+				            		return;
+				            	}
 				            	Calendar c = Calendar.getInstance();
 				            	c.set(Calendar.YEAR, year);
 				            	c.set(Calendar.MONTH, monthOfYear);
@@ -75,6 +88,7 @@ public class AndroidGetDate implements GetDate{
 		application.handler.post(new Runnable() {
 			@Override
 			public void run() {
+				dec();
 				final Calendar c = Calendar.getInstance();
 				final int mHour = c.get(Calendar.HOUR);
 				final int mMinute = c.get(Calendar.MINUTE);

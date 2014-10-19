@@ -3,6 +3,7 @@ package com.bubbledone.main;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
@@ -31,7 +32,7 @@ public class BubbleWorld {
 		this.parent = parent;
 		dimensions = new Vector2(width, height);
 		attractor = new Attractor(10,10, width/2 - 10, height/2);
-		bubbles = new ArrayList<TaskBubble>();
+		bubbles = new CopyOnWriteArrayList<TaskBubble>();
 		//createBtn = new CreateButton(Gdx.graphics.getWidth() - 100, Gdx.graphics.getHeight() - 100, true);
 		//System.out.println(Gdx.graphics.getWidth() + " : " + Gdx.graphics.getHeight());
 		createBtn = new CreateButton(getWidth(), getHeight(), 15, true);
@@ -55,7 +56,7 @@ public class BubbleWorld {
         batch = new SpriteBatch();
 	}
 	
-	public void addTaskBubble(TaskBubble bubble) {
+	public synchronized void addTaskBubble(TaskBubble bubble) {
 		this.bubbles.add(bubble);
 	}
 	
@@ -68,7 +69,7 @@ public class BubbleWorld {
 		return diff.scl(force_mag/radius);
 	}
 	
-	public void update(float delta) {
+	public synchronized void update(float delta) {
 		List<Vector2> new_velocities = new ArrayList<Vector2>();
 		List<Vector2> new_positions = new ArrayList<Vector2>();
 		for(int affectee_i=0; affectee_i<bubbles.size(); affectee_i++){
@@ -105,7 +106,7 @@ public class BubbleWorld {
 		return attractor;
 	}
 	
-	public List<TaskBubble> getBubbles() {
+	public synchronized List<TaskBubble> getBubbles() {
 		return bubbles;
 	}
 	
