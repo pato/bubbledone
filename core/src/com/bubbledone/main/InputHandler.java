@@ -68,9 +68,7 @@ public class InputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		System.out.println(last == null);
 		Vector3 coords = cam.unproject(new Vector3(screenX, screenY, 0));
-		assert last == null;
 		last.update((int) coords.x, (int) coords.y, 0, 0, last.getRadius());
 		return true;
 	}
