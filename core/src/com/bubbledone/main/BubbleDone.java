@@ -18,6 +18,10 @@ public class BubbleDone extends Game {
 	public BubbleDone(GetDate getDate) {
 		this.getDate = getDate;
 	}
+	
+	public GetDate getDateImplementation() {
+		return getDate;
+	}
 
 	@Override
 	public void create() {
