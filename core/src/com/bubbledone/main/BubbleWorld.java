@@ -6,14 +6,15 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.bubbledone.interfaces.Circular;
 import com.bubbledone.screens.BubbleScreen;
 import com.bubbledone.ui.BubbleInfoPopup;
 import com.bubbledone.ui.CreateButton;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class BubbleWorld {
 	Attractor attractor;
@@ -25,6 +26,8 @@ public class BubbleWorld {
 	private BitmapFont font;
 	private Vector2 dimensions;
 	private BubbleScreen parent;
+	
+	private Texture background;
 	
 	public BubbleWorld(float width, float height, BubbleScreen parent) {
 		bubblePopup = new BubbleInfoPopup();
@@ -58,6 +61,12 @@ public class BubbleWorld {
         font.setColor(Color.WHITE);
         font.setScale(0.25f);
         batch = new SpriteBatch();
+
+        background = new Texture(Gdx.files.internal("background.jpg"));
+	}
+	
+	public Texture getBackground() {
+		return background;
 	}
 	
 	public synchronized void addTaskBubble(TaskBubble bubble) {
