@@ -15,7 +15,8 @@ import com.bubbledone.main.TaskCreator;
 
 public class AndroidGetDate implements GetDate{
 	private AndroidApplication application;
-	private int ii = 0;
+	private static int ii = 0;
+	private static int jj = 0;
 	
 	public AndroidGetDate(AndroidApplication application) {
 		this.application = application;
@@ -27,6 +28,15 @@ public class AndroidGetDate implements GetDate{
 	
 	protected boolean dec(){
 		ii = 0;
+		return false;
+	}
+	
+	protected boolean inc2(){
+		return (jj++ == 0);
+	}
+	
+	protected static boolean dec2(){
+		jj = 0;
 		return false;
 	}
 	
@@ -67,6 +77,8 @@ public class AndroidGetDate implements GetDate{
 		application.handler.post(new Runnable() {
 			@Override
 			public void run() {
+				dec();
+				dec2();
 				final int mHour = 0;
 				final int mMinute = 15;
 				
@@ -88,7 +100,7 @@ public class AndroidGetDate implements GetDate{
 		application.handler.post(new Runnable() {
 			@Override
 			public void run() {
-				dec();
+				inc2();
 				final Calendar c = Calendar.getInstance();
 				final int mHour = c.get(Calendar.HOUR);
 				final int mMinute = c.get(Calendar.MINUTE);
