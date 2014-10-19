@@ -40,16 +40,16 @@ public class InputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		long time = System.nanoTime();
-		if (last_tap == 0) {
-			last_tap = time;
-		} else {
-			if (time - last_tap <= 1000000000) {
-				System.out.println("double tap");
-			}
-			last_tap = 0;
-		}
-		System.out.println("last_tap " + last_tap + " time " + time);
+//		long time = System.nanoTime();
+//		if (last_tap == 0) {
+//			last_tap = time;
+//		} else {
+//			if (time - last_tap <= 2000000000) {
+//				System.out.println("double tap"); 
+//			}
+//			last_tap = 0;
+//		}
+
 		Vector3 coords = cam.unproject(new Vector3(screenX, screenY, 0));
 		
 		// if you pressed the create button
@@ -87,7 +87,7 @@ public class InputHandler implements InputProcessor {
 		Vector3 coords = cam.unproject(new Vector3(screenX, screenY, 0));
 		if (last == null) return false;
 		last.update((int) coords.x, (int) coords.y, 0, 0, last.getRadius());
-		return true;
+		return false;
 	}
 
 	@Override

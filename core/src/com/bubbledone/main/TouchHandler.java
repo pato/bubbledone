@@ -21,23 +21,35 @@ public class TouchHandler implements GestureListener {
 
 	@Override
 	public boolean touchDown(float x, float y, int pointer, int button) {
-		System.out.println("touch touch down");
 		return false;
 	}
 
 	@Override
 	public boolean tap(float x, float y, int count, int button) {
-		System.out.println("tap");
-		long time = System.nanoTime();
-		if (last_tap == 0) return false;
-		else if (time - last_tap <= 100000) {
-			System.out.println("Double tap");
+		// double tap handler
+		if (count < 2) return false;
+		
+		Vector3 coords = cam.unproject(new Vector3(x, y, 0));
+		TaskBubble task = null;
+		for (TaskBubble t : world.getBubbles()) {
+			if (new Circle(t.getPosition(), t.getRadius()).contains(new Vector2(coords.x, coords.y))) {
+				task = t;
+			}
 		}
-		return false;
+
+		if (task == null) {
+			System.out.println("no match found");
+			return false;
+		}
+		
+		
+				
+		return true;
 	}
 
 	@Override
 	public boolean longPress(float x, float y) {
+		// long press gets info
 		System.out.println("LONG TAP");
 		Vector3 coords = cam.unproject(new Vector3(x, y, 0));
 
@@ -49,11 +61,9 @@ public class TouchHandler implements GestureListener {
 
 		// or if you pressed on a new bubble
 		TaskBubble task = null;
-		if (last == null) {
-			for (TaskBubble t : world.getBubbles()) {
-				if (new Circle(t.getPosition(), t.getRadius()).contains(new Vector2(coords.x, coords.y))) {
-					task = t;
-				}
+		for (TaskBubble t : world.getBubbles()) {
+			if (new Circle(t.getPosition(), t.getRadius()).contains(new Vector2(coords.x, coords.y))) {
+				task = t;
 			}
 		}
 
@@ -64,19 +74,20 @@ public class TouchHandler implements GestureListener {
 		
 		
 		
-		last = task;
-		return true;
+ 		return true;
 	}
 
 	@Override
 	public boolean fling(float velocityX, float velocityY, int button) {
+		System.out.println("fling");
 		return false;
 	}
 
 	@Override
 	public boolean pan(float x, float y, float deltaX, float deltaY) {
+		System.out.println("pan");	
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
