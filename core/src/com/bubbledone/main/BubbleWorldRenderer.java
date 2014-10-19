@@ -34,8 +34,7 @@ public class BubbleWorldRenderer {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		world.getBatch().begin();
-        world.getBatch().draw(new Texture(Gdx.files.internal("background.jpg")),
-        		0, 0, 800, 480);
+        //world.getBatch().draw(new Texture(Gdx.files.internal("background.jpg")),0, 0, 800, 480);
         world.getBatch().end();
 		
 		// draw attractor
@@ -50,4 +49,10 @@ public class BubbleWorldRenderer {
 		// draw button
 		CreateButtonRenderer.render(world, world.getCreateButton(), cam, shapeRenderer);
     }
+	
+	public void dispose() {
+		shapeRenderer.dispose();
+		world.getBatch().dispose();
+		world.getFont().dispose();
+	}
 }

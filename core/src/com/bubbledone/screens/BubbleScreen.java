@@ -55,7 +55,7 @@ public class BubbleScreen implements Screen {
 
     @Override
     public void dispose() {
-        // Leave blank
+        
     }
     
     public void addTaskBubble(TaskBubble bubble){
