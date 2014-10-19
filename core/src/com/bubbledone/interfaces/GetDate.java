@@ -5,5 +5,6 @@ import com.bubbledone.main.TaskCreator;
 
 public interface GetDate {
 	public Calendar getDate(TaskCreator taskCreator);
-	public long getTime();
+	public long getEstimatedDuration(TaskCreator taskCreator);
+	public long getDueTime(TaskCreator taskCreator);
 }
