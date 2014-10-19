@@ -23,6 +23,12 @@ public class CreateButton {
 	public float getY() {
 		return position.y;
 	}
+	public void display() {
+		visible = true;
+	}
+	public void hide() {
+		visible = false;
+	}
 	
 	public boolean isVisible() {
 		return visible;

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.input.GestureDetector;
+import com.bubbledone.ui.BubbleInfoPopupRenderer;
 import com.bubbledone.ui.CreateButtonRenderer;
 
 public class BubbleWorldRenderer {

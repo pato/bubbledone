@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.bubbledone.interfaces.Circular;
 import com.bubbledone.screens.BubbleScreen;
+import com.bubbledone.ui.BubbleInfoPopup;
 import com.bubbledone.ui.CreateButton;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

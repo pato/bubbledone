@@ -1,4 +1,6 @@
-package com.bubbledone.main;
+package com.bubbledone.ui;
+
+import com.bubbledone.main.TaskBubble;
 
 public class BubbleInfoPopup {
 	private TaskBubble bubble;
